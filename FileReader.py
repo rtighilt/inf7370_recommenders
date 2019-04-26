@@ -19,7 +19,7 @@ class FileReader:
         if os.path.exists(r'dataframes/' + ntpath.basename(filepath[:-3])):
             self.load_data_from_binary(ntpath.basename(filepath[:-3]))
         else:
-            self.read().save_data_to_binary()
+            self.read().save_data_to_binary(ntpath.basename(filepath[:-3]))
 
     def read(self):
         """ Reading the file from csv, and returning a dataframe with only a few data if specified"""

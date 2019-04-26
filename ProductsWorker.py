@@ -5,6 +5,8 @@ from anytree.util import commonancestors
 from FileReader import FileReader
 from collections import defaultdict
 import pickle
+import time
+import progressbar
 
 
 class ProductsWorker(FileReader):
@@ -20,7 +22,7 @@ class ProductsWorker(FileReader):
             self.nodes = self.load_products_nodes()
         else:
             print("Nodes aren't present in cache, building in process")
-            for product in self.data.iterrows():
+            for product in progressbar.progressbar(self.data.iterrows()):
                 self.nodes[product[1]["PRODUCT_ID"]] = self.find_node(product[1]["PRODUCT_ID"])
             self.save_products_nodes()
 
