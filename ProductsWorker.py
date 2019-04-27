@@ -50,7 +50,7 @@ class ProductsWorker(FileReader):
         return self.tree
 
     def save_tree(self, num_rows):
-        file = open(r'trees/' + str(num_rows), 'wb')
+        file = open(r'trees/' + str(num_rows), 'wb+')
         pickle.dump(self.tree, file)
         file.close()
 
@@ -107,7 +107,7 @@ class ProductsWorker(FileReader):
         return [[node.name for node in children] for children in LevelOrderGroupIter(parent)][-1]
 
     def save_products_nodes(self):
-        file = open(r'nodes/products', 'wb')
+        file = open(r'nodes/products', 'wb+')
         pickle.dump(self.nodes, file)
         file.close()
 

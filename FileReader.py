@@ -40,6 +40,6 @@ class FileReader:
         file.close()
 
     def save_data_to_binary(self, path):
-        file = open(r'dataframes/' + path, 'wb')
+        file = open(r'dataframes/' + path, 'wb+')
         pickle.dump(self.data, file)
         file.close()
